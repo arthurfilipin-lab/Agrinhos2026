@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroForte | O Futuro Sustentável no Campo</title>
+    
+    <!-- Google Fonts: Poppins e Roboto -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS DE DESIGN & RESETS
+           ========================================================================== */
+        :root {
+            --primary: #2d6a4f;       
+            --primary-light: #52b788; 
+            --dark: #1b4332;          
+            --accent: #b78752;        
+            --light: #f8f9fa;         
+            --white: #ffffff;
+            --text-main: #333333;     
+            --text-muted: #666666;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Componentes Utilitários */
+        section {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 60px;
+            font-size: 1.1rem;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 35px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(82, 183, 136, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* ==========================================================================
+           2. MENU DE NAVEGAÇÃO (HEADER)
+           ========================================================================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-item a {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-item a:hover {
+            color: var(--primary-light);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION (BANNER PRINCIPAL)
+           ========================================================================== */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(27, 67, 50, 0.75), rgba(27, 67, 50, 0.55)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* ==========================================================================
+           4. SEÇÃO PILARES (CARDS EXPANSÍVEIS AO CLICAR)
+           ========================================================================== */
+        #pilares {
+            background-color: var(--light);
+        }
+
+        .grid-pilares {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card-pilar {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card-pilar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(82, 183, 136, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .icon-container i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Conteúdo Oculto da Expansão */
+        .card-expand-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+            text-align: left;
+            margin-top: 0;
+            padding-top: 0;
+            border-top: 0 dashed #ddd;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card-expand-content ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .card-expand-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Gatilho de Ativação via JS */
+        .card-pilar.active {
+            grid-column: span 1;
+            background-color: #f4fcf7;
+            border: 1px solid var(--primary-light);
+        }
+
+        .card-pilar.active .card-expand-content {
+            max-height: 1000px;
+            opacity: 1;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #ced4da;
+            transition: all 0.5s cubic-bezier(0.99, 0.01, 0.45, 1);
+        }
+
+        .click-hint {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .card-pilar.active .click-hint {
+            display: none;
+        }
+
+        /* ==========================================================================
+           5. SEÇÃO TECNOLOGIA NO CAMPO (DUAS COLUNAS)
+           ========================================================================== */
+        .split-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .split-text, .split-image {
+            flex: 1;
+        }
+
+        .split-text h2 {
+            font-size: 2.3rem;
+            margin-bottom: 20px;
+        }
+
+        .split-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .tech-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tech-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-weight: 500;
